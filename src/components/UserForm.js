@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 const UserForm = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gen, setGen] = useState("");
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -11,15 +13,17 @@ const UserForm = (props) => {
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
-
+  
   const handleGenChange = (event) => {
-        setGen(event.target.value);
-    }
+    setGen(event.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+  
     let newUser = {
+      id: uuid(),
       name: name,
       email: email,
       gen: gen,
@@ -47,9 +51,8 @@ const UserForm = (props) => {
         placeholder="Email"
         value={email}
         onChange={handleEmailChange}
-        />
-
-        <input
+      />
+      <input
         name="Gen"
         type="text"
         placeholder="Gen"
